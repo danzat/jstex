@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Test page for Loading TTF chunk header data</title>
+    <script type="text/javascript" src="../src/stream.js"></script>
+    <script type="text/javascript" src="../src/xhrfile.js"></script>
+    <script type="text/javascript" src="../src/ttf.js"></script>
+    <script type="text/javascript" src="../src/glyph.js"></script>
+    <script type="text/javascript">
+        function main() {
+            f = new jstex.TTF("/res/ttf/cmr10.ttf");
+            ctx = document.getElementById('canvas').getContext('2d');
+        }
+        function draw(index) {
+            ctx.clearRect(0, 0, 200, 200);
+            ctx.strokeRect(0, 0, 200, 200);
+            ctx.save();
+            ctx.translate(100, 100);
+            var gggg = new jstex.Glyph(f.get_glyph_path(index), f.get_glyph_box(index));
+            gggg.render(ctx, 4, 72);
+            ctx.restore();
+        }
+    </script>
+</head>
+<body onload='main()'>
+    <canvas id='canvas' width='200' height='200' />
+</body>
+</html>
